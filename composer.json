@@ -1,0 +1,17 @@
+{
+    "name": "asus/bmkg",
+    "description": "untuk mengekspor file dalam bentuk word pdf dan excel",
+    "autoload": {
+        "psr-4": {
+            "Asus\\Bmkg\\": "src/"
+        }
+    },
+    "require": {
+        "phpoffice/phpword": "^1.2",
+        "mpdf/mpdf": "^6.1",
+        "dompdf/dompdf": "^3.0",
+        "phpoffice/phpspreadsheet": "^2.1",
+        "tecnickcom/tcpdf": "^6.7",
+        "setasign/fpdi": "^1.6"
+    }
+}

@@ -1,0 +1,34 @@
+# Database & Configuration
+config/config/database.php
+database_login.php
+service/database_login.php
+
+# Environment
+.env
+.env.local
+
+# Uploads & Generated Files
+/uploads/*
+!uploads/.gitkeep
+/export/*
+!export/*.php
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Composer
+composer.lock
+/vendor/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Temporary Files
+*.tmp
+*.log

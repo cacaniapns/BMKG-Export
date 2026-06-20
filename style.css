@@ -1,0 +1,611 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    background: url('background_login.jpg') no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.form-box {
+    position: relative;
+    width: 400px;
+    height: 480px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 2em;
+    color: #fff;
+    text-align: center;
+}
+
+.inputbox {
+    position: relative;
+    margin: 30px 0;
+    width: 310px;
+    border-bottom: 2px solid #fff;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #fff;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    top: -5px;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #fff;
+}
+
+.inputbox ion-icon {
+    position: absolute;
+    right: 8px;
+    color: #fff;
+    font-size: 1.2em;
+    top: 20px;
+}
+
+.forget {
+    margin: -15px 0 15px;
+    font-size: 0.9em;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.forget label input {
+    margin-right: 3px;
+}
+
+.forget label a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.forget label a:hover {
+    text-decoration: underline;
+}
+
+button {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.register {
+    font-size: 0.9em;
+    color: #fff;
+    text-align: center;
+    margin: 25px 0 10px;
+}
+
+.register p a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.register p a:hover {
+    text-decoration: underline;
+}
+
+.form-value {
+    position: relative;
+    text-align: center; 
+}
+
+.form-image {
+    width: 160px; 
+    height: 110px; 
+    margin-bottom: 20px; /* atur margin sesuai desain */
+    border-radius: 50%; /* gambar jadi bulat */
+}
+
+
+/* css buat data.php */
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+/* baca data yang tersedia */
+.data-range-info {
+    font-size: 16px; 
+    font-weight: bold; 
+    color: #333; 
+    margin-top: 10px; 
+    margin-bottom: 10px; 
+    padding: 10px; 
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd; 
+    border-radius: 10px; 
+}
+
+
+.result-title {
+    text-align: center;
+    color: #333;
+    font-size: 1.6em;
+    margin: 20px 0 18px 0;
+    font-weight: 600;
+}
+
+/* form pencarian */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px 0;
+    padding: 12px 14px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.search-form label {
+    font-size: 1.02em;
+    color: #333;
+    margin: 8px 0 6px 0;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+}
+
+.search-form input[type="date"] {
+    padding: 8px 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin: 6px 0 12px 0;
+    font-size: 0.98em;
+    width: 100%;
+    max-width: 150px; 
+}
+
+.search-form button {
+    padding: 10px 22px;
+    border: none;
+    background-color: #009879;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1.02em;
+    cursor: pointer;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.search-form button:hover {
+    background-color: #007a63;
+}
+
+.search-form label[for="data_type"] {
+    font-size: 16px;
+    color: #000000;
+    margin-bottom: 4px;
+}
+
+.search-form select.data_type {
+    background-color: #e9f7fe;
+    padding: 10px;
+    border: 3px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-form select.data_type:focus {
+    outline: none;
+    border-color: #fff;
+    background-color: #d0e6f7;
+}
+
+/* styling checkbox dan radio button */
+.search-form fieldset {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 10px 12px;
+    margin: 10px auto;
+    background-color: #fff;
+    width: fit-content;
+    max-width: none;
+}
+
+.search-form legend {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #333;
+    padding: 0 10px;
+    margin-left: -10px;
+}
+
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-wrap: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.checkbox-group label,
+.radio-group label {
+    display: flex;
+    align-items: center;
+    font-size: 0.95em;
+    color: #333;
+    cursor: pointer;
+    user-select: none;
+    padding: 4px 6px;
+    white-space: nowrap;
+}
+
+/* box lebih kecil buat area tipe data */
+.search-form fieldset:nth-of-type(2) {
+    padding: 8px 12px;
+    max-width: 200px;
+    display: inline-block;
+}
+
+.search-form .radio-group label {
+    font-size: 0.95em;
+    text-align: center;
+}
+
+.checkbox-group input[type="checkbox"],
+.radio-group input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+    accent-color: #009879;
+}
+
+.checkbox-group label:hover,
+.radio-group label:hover {
+    color: #009879;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 40px 0;
+    font-size: 0.95em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+}
+
+.data-table th, .data-table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.data-table th {
+    background-color: #009879;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.data-table tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.data-table tr:hover {
+    background-color: #f0f0f0;
+}
+
+.result-title,
+.data-table ~ h3 {
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+.export-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.export-form select {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 1em;
+}
+
+.export-form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #009879;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.export-form button:hover {
+    background-color: #007a63;
+}
+
+.no-data {
+    text-align: center;
+    color: #666;
+    font-size: 1em;
+    margin: 20px 0;
+}
+
+
+/* CSS buat upload.php */
+
+.upload-container {
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+}
+
+.upload-container h1 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.upload-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-container label {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.upload-container select,
+.upload-container input[type="file"],
+.upload-container input[type="submit"] {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-size: 1em;
+}
+
+.upload-container select {
+    width: 100%;
+    max-width: 300px;
+}
+
+.upload-container input[type="file"] {
+    width: 100%;
+    max-width: 300px;
+}
+
+.upload-container input[type="submit"] {
+    background-color: #009879;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.upload-container input[type="submit"]:hover {
+    background-color: #007a63;
+}
+
+/* CSS buat tabel data */
+.data-container {
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.data-container h1 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.data-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-container th, .data-container td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.data-container th {
+    background-color: #009879;
+    color: #ffffff;
+}
+
+.data-container tr:nth-of-type(even) {
+    background-color: #f9f9f9;
+}
+
+.data-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+.data-container form {
+    display: inline;
+}
+
+
+.delete-button {
+    background-color: #e74c3c; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    text-align: center; 
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px;
+    cursor: pointer; 
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    background-color: white; 
+    color: #e74c3c; 
+    border: 2px solid #e74c3c; 
+}
+
+.header-container {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.header-container h1 {
+    margin: 0;
+}
+
+/* Data2.php */
+.weather-chart-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* styling form */
+.weather-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.weather-form label {
+    flex: 1 1 150px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.weather-form input[type="date"],
+.weather-form select {
+    flex: 1 1 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.weather-form button {
+    flex: 1 1 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.weather-form button:hover {
+    background-color: #0056b3;
+}
+
+/* styling grafik */
+.chart_canvas {
+    width: 100% !important;
+    height: 550px !important;
+}
+
+.export_button {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #28a745;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.export_button:hover {
+    background-color: #218838;
+}
+
+/* pesan kalo ga ada data */
+.no-data-message {
+    font-size: 18px;
+    color: #dc3545;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* css header sama footer */
+header {
+    background-color: #007bff;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
