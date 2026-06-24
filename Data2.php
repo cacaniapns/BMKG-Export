@@ -1,10 +1,7 @@
 <?php
 // Koneksi ke database
-$mysqli = new mysqli("localhost", "root", "", "meteorologi");
+require __DIR__ . '/service/database_login.php';
 
-if ($mysqli->connect_error) {
-    die("Koneksi gagal: " . $mysqli->connect_error);
-}
 
 // Ambil data dari database
 $startDate = $_GET['start_date'] ?? '2023-01-01';

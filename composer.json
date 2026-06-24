@@ -13,5 +13,10 @@
         "phpoffice/phpspreadsheet": "^2.1",
         "tecnickcom/tcpdf": "^6.7",
         "setasign/fpdi": "^1.6"
+    },
+    "config": {
+        "audit": {
+            "block-insecure": false
+        }
     }
 }

@@ -19,6 +19,7 @@ section {
     position: relative;
     width: 400px;
     height: 480px;
+    padding: 20px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 20px;
@@ -42,20 +43,14 @@ h2 {
 }
 
 .inputbox label {
-    position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
     color: #fff;
     font-size: 1em;
     pointer-events: none;
-    transition: 0.5s;
 }
 
-input:focus ~ label,
-input:valid ~ label {
-    top: -5px;
-}
 
 .inputbox input {
     width: 100%;
@@ -566,6 +561,430 @@ button {
     background-color: #0056b3;
 }
 
+/* ===== DELETE DATA PAGE STYLES ===== */
+.delete-container {
+    padding: 20px 30px 40px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.delete-container h1 {
+    text-align: center;
+    font-size: 1.9em;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.delete-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 12px 0;
+    padding: 22px 24px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.delete-form .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.delete-form .form-col {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-form label {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.delete-form input[type="date"],
+.delete-form select {
+    padding: 9px 11px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.98em;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.delete-form input:focus,
+.delete-form select:focus {
+    border-color: #c0392b;
+}
+
+.current-value-info {
+    padding: 11px 14px;
+    margin-bottom: 14px;
+    border-radius: 6px;
+    background: #e6f4f1;
+    border: 1px solid #b2dfdb;
+    font-size: 0.95em;
+    color: #00695c;
+    display: none;
+}
+
+.current-value-info.warn {
+    background: #fff8e1;
+    border-color: #ffe082;
+    color: #795548;
+}
+
+.alert-box {
+    padding: 14px 16px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 0.97em;
+    text-align: center;
+}
+
+.alert-success {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    color: #2e7d32;
+}
+
+.alert-error {
+    background-color: #ffebee;
+    border: 1px solid #ef9a9a;
+    color: #c62828;
+}
+
+.delete-form .btn-delete {
+    padding: 11px 22px;
+    border: none;
+    background-color: #c0392b;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1.05em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    height: auto;
+}
+
+.delete-form .btn-delete:hover {
+    background-color: #a93226;
+    transform: translateY(-1px);
+}
+
+.back-link {
+    display: block;
+    margin-top: 16px;
+    text-align: center;
+    color: #009879;
+    text-decoration: none;
+    font-size: 0.92em;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.back-link:hover {
+    color: #007a63;
+    text-decoration: underline;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 35px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-box .modal-icon {
+    text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.modal-box .modal-title {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: 700;
+    color: #c0392b;
+    margin-bottom: 10px;
+}
+
+.modal-box .modal-message {
+    text-align: center;
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.modal-box .modal-detail {
+    background: #f9f9f9;
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #333;
+    border-left: 4px solid #c0392b;
+}
+
+.modal-box .modal-detail strong {
+    display: inline-block;
+    min-width: 80px;
+}
+
+.modal-box .modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.modal-box .modal-buttons button {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-box .btn-cancel {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.modal-box .btn-cancel:hover {
+    background: #d0d0d0;
+}
+
+.modal-box .btn-confirm-delete {
+    background: #c0392b;
+    color: #fff;
+}
+
+.modal-box .btn-confirm-delete:hover {
+    background: #a93226;
+    transform: translateY(-2px);
+}
+
+/* ===== EXPORT/SEARCH DATA PAGE STYLES ===== */
+.container {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 20px 30px 40px;
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 1.9em;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px 0;
+    padding: 22px 24px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.search-form .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.search-form .form-col {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-form label {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.search-form input[type="date"] {
+    padding: 9px 11px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.98em;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.search-form input[type="date"]:focus {
+    border-color: #009879;
+}
+
+.search-form fieldset {
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 8px 0 14px;
+    background-color: #fff;
+}
+
+.search-form legend {
+    font-size: 0.95em;
+    font-weight: 600;
+    color: #333;
+    padding: 0 8px;
+}
+
+.search-form .btn-search {
+    padding: 11px 22px;
+    border: none;
+    background-color: #009879;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1.05em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+/* ===== UPDATE DATA PAGE STYLES ===== */
+.update-container {
+    padding: 20px 30px 40px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.update-container h1 {
+    text-align: center;
+    font-size: 1.9em;
+    color: #333;
+    margin-bottom: 6px;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 12px 0;
+    padding: 22px 24px;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+}
+
+.update-form .form-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+}
+
+.update-form .form-col {
+    flex: 1;
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+}
+
+.update-form label {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.update-form input[type="date"],
+.update-form input[type="number"],
+.update-form select {
+    padding: 9px 11px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.98em;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+    color: #333;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.update-form input:focus,
+.update-form select:focus {
+    border-color: #009879;
+}
+
+.update-form .btn-submit {
+    padding: 11px 22px;
+    border: none;
+    background-color: #009879;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 1.05em;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    height: auto;
+}
+
+.update-form .btn-submit:hover {
+    background-color: #007a63;
+    transform: translateY(-1px);
+}
+
 /* styling grafik */
 .chart_canvas {
     width: 100% !important;
@@ -595,6 +1014,13 @@ button {
     margin-top: 20px;
 }
 
+.weather-box1 p,
+.weather-box2 p,
+.weather-box3 p,
+.weather-box4 p {
+    color: #ffffff; /* Warna putih */
+}
+
 /* css header sama footer */
 header {
     background-color: #007bff;
@@ -608,4 +1034,292 @@ footer {
     color: #ffffff;
     padding: 10px;
     text-align: center;
+}
+
+/* ===== TABEL FULL WIDTH TANPA SCROLL ===== */
+
+.hourly-table-wrapper {
+    width: 100%;
+    max-width: none;
+    margin: 20px 0;
+    padding: 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: visible; /* Tidak ada scroll */
+}
+
+.hourly-table-wrapper table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: white;
+    table-layout: fixed; /* Kolom proporsional */
+}
+
+/* Header */
+.hourly-table-wrapper table thead th {
+    background: #009879;
+    color: white;
+    padding: 10px 4px;
+    font-weight: 600;
+    border: 1px solid #007a63;
+    text-align: center;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Cell data */
+.hourly-table-wrapper table td {
+    padding: 8px 4px;
+    border: 1px solid #ddd;
+    text-align: center;
+    font-size: 11px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Kolom Tanggal - lebih lebar */
+.hourly-table-wrapper table td:first-child,
+.hourly-table-wrapper table thead th:first-child {
+    background: #f0f0f0;
+    font-weight: 600;
+    border-right: 2px solid #009879;
+    width: 12%; /* Lebar kolom tanggal */
+    min-width: 80px;
+    position: sticky;
+    left: 0;
+    z-index: 5;
+}
+
+.hourly-table-wrapper table thead th:first-child {
+    z-index: 15;
+    background: #009879;
+}
+
+/* Kolom Jam - dibuat kecil agar muat */
+.hourly-table-wrapper table td:not(:first-child),
+.hourly-table-wrapper table thead th:not(:first-child) {
+    width: 3.6%; /* 24 jam dibagi rata */
+    min-width: 35px;
+    max-width: 50px;
+    font-size: 10px;
+    padding: 6px 2px;
+}
+
+/* Warna baris */
+.hourly-table-wrapper table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.hourly-table-wrapper table tr:hover {
+    background-color: #e8f4f8;
+}
+
+/* ===== DATA TABLE BIASA (DAILY/MONTHLY) ===== */
+.data-table-container {
+    width: 100%;
+    max-width: none;
+    margin: 20px 0;
+    padding: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: visible;
+}
+
+.data-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+.data-table-container table th,
+.data-table-container table td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.data-table-container table th {
+    background: #009879;
+    color: white;
+    font-weight: 600;
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Layar kecil - tablet */
+@media (max-width: 992px) {
+    .hourly-table-wrapper table td:not(:first-child),
+    .hourly-table-wrapper table thead th:not(:first-child) {
+        font-size: 9px;
+        padding: 4px 2px;
+        min-width: 28px;
+    }
+    
+    .hourly-table-wrapper table td:first-child,
+    .hourly-table-wrapper table thead th:first-child {
+        font-size: 10px;
+        min-width: 60px;
+        width: 10%;
+    }
+}
+
+/* Layar mobile */
+@media (max-width: 768px) {
+    .hourly-table-wrapper table {
+        font-size: 9px;
+    }
+    
+    .hourly-table-wrapper table td:not(:first-child),
+    .hourly-table-wrapper table thead th:not(:first-child) {
+        font-size: 7px;
+        padding: 3px 1px;
+        min-width: 20px;
+    }
+    
+    .hourly-table-wrapper table td:first-child,
+    .hourly-table-wrapper table thead th:first-child {
+        font-size: 8px;
+        min-width: 50px;
+        width: 8%;
+    }
+}
+
+/* Layar sangat kecil */
+@media (max-width: 480px) {
+    .hourly-table-wrapper table td:not(:first-child),
+    .hourly-table-wrapper table thead th:not(:first-child) {
+        font-size: 6px;
+        padding: 2px 1px;
+        min-width: 15px;
+    }
+    
+    .hourly-table-wrapper table td:first-child,
+    .hourly-table-wrapper table thead th:first-child {
+        font-size: 7px;
+        min-width: 40px;
+        width: 7%;
+    }
+}
+
+/* ===== PERBAIKAN TAMPILAN TABEL ===== */
+
+/* Judul utama */
+.result-title {
+    font-size: 1.8em;
+    color: #2c3e50;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Header variabel dengan icon */
+.variable-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 20px;
+    border-radius: 8px 8px 0 0;
+    margin-top: 30px;
+}
+
+.variable-header .icon {
+    font-size: 1.5em;
+}
+
+.variable-header h3 {
+    margin: 0;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.variable-header .badge {
+    margin-left: auto;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/* Warna header variabel */
+.variable-header.temperature {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    color: white;
+}
+.variable-header.humidity {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+.variable-header.wind-speed {
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
+    color: white;
+}
+.variable-header.wind-dir {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+    color: white;
+}
+.variable-header.rainfall {
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+    color: white;
+}
+
+/* Wrapper tabel dengan border */
+.hourly-table-wrapper {
+    border-radius: 0 0 8px 8px;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    overflow-x: auto;
+    margin-bottom: 0;
+}
+
+.hourly-table-wrapper table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: white;
+}
+
+/* Info tambahan di judul */
+.data-info {
+    padding: 15px 20px;
+    background: #f8f9fa;
+    border-bottom: 3px solid #009879;
+    margin-bottom: 0;
+}
+
+.data-info h2 {
+    margin: 0;
+    font-size: 1.8em;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.data-info p {
+    margin: 5px 0 0 0;
+    color: #7f8c8d;
+    font-size: 0.95em;
+}
+
+.data-info p strong {
+    color: #2c3e50;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .data-info h2 {
+        font-size: 1.3em;
+    }
+    .data-info p {
+        font-size: 0.85em;
+    }
+    .variable-header h3 {
+        font-size: 1em;
+    }
+    .variable-header .badge {
+        display: none;
+    }
 }

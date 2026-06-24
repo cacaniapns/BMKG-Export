@@ -1,34 +1,46 @@
 <?php
 include "service/database_login.php";
 
+session_start();
+
 if (isset($_POST['login'])) {
-    $username = $_POST['username'];
+    $email = $_POST['username']; // Ini sebenarnya email
     $password = $_POST['password'];
     $remember = isset($_POST['remember']);
 
-    // Use prepared statements for security
-    $stmt = $db->prepare("SELECT * FROM user WHERE username = ? AND password = ?");
-    $stmt->bind_param("ss", $username, $password);
+    // Hash password dengan SHA2 (sesuai database)
+    $hashed_password = hash('sha256', $password);
+
+    // Query ke tabel users (bukan user)
+    $stmt = $db->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
+    $stmt->bind_param("ss", $email, $hashed_password);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $data = $result->fetch_assoc();
-        header("location: dashboard.php");
+        
+        // Simpan session
+        $_SESSION['user_id'] = $data['id'];
+        $_SESSION['username'] = $data['email'];
+        $_SESSION['user_name'] = $data['name'];
+        $_SESSION['login_time'] = time();
         
         if ($remember) {
-            // Set cookie for username, with a 30-day expiration
-            setcookie("username", $username, time() + (86400 * 30), "/"); 
-            // Set cookie for password if desired (note: storing passwords in cookies is not recommended)
-            // setcookie("password", $password, time() + (86400 * 30), "/"); 
+            // Set cookie untuk email, berlaku 30 hari
+            setcookie("username", $email, time() + (86400 * 30), "/");
         } else {
-            // Clear cookies if "Remember Me" is not checked
+            // Clear cookies jika "Remember Me" tidak dicentang
             if (isset($_COOKIE['username'])) {
                 setcookie("username", "", time() - 3600, "/");
             }
         }
+        
+        // Redirect ke dashboard
+        header("Location: dashboard.php");
+        exit();
     } else {
-        echo "Email atau password salah!";
+        echo "<script>alert('Email atau password salah!');</script>";
     }
     $stmt->close();
 }
@@ -46,19 +58,19 @@ if (isset($_POST['login'])) {
     <section>
         <div class="form-box">
             <div class="form-value">
-                <img src="gambar/BMKG.png" alt="Logo" class="form-image">
+                <img src="gambar/gambar/BMKG.png" alt="Logo" class="form-image">
                 <!-- Login Form -->
                 <form action="halaman_login.php" method="POST">
                     <h2>Login</h2>
                     <div class="inputbox">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <input type="email" name="username" required value="<?php echo isset($_COOKIE['username']) ? htmlspecialchars($_COOKIE['username']) : ''; ?>">
                         <label for="">Email</label>
+                        <input type="email" name="username" required value="<?php echo isset($_COOKIE['username']) ? htmlspecialchars($_COOKIE['username']) : ''; ?>">
                     </div>
                     <div class="inputbox">
                         <ion-icon name="lock-closed-outline"></ion-icon>
-                        <input type="password" name="password" required>
                         <label for="">Password</label>
+                        <input type="password" name="password" required>
                     </div>
                     <div class="forget">
                         <ion-icon name="lock-closed-outline"></ion-icon>

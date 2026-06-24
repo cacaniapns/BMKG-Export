@@ -1,17 +1,8 @@
 <?php
 // Database connection parameters
-$servername = "localhost";
-$username = "root"; // Change to your MySQL username
-$password = ""; // Change to your MySQL password
-$dbname = "meteorologi"; // Change to your database name
+require __DIR__ . '/../service/database_login.php';
+$conn = $mysqli;
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $fileType = $_GET['fileType'];
 

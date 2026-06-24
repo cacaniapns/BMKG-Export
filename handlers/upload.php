@@ -3,18 +3,9 @@
 ini_set('max_execution_time', 1800); // 30 menit waktu yang digunakan untuk mengeksekusi data yang di upload
 
 // Koneksi ke Database
-$servername = "localhost";
-$username = "root"; // Username Mysql
-$password = ""; // Password
-$dbname = "meteorologi"; // nama database yang digunakan
+require __DIR__ . '/../service/database_login.php';
+$conn = $mysqli;
 
-// Membuat Koneksi
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Cek Koneksi
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 // proses upload
 if (isset($_POST["submit"])) {

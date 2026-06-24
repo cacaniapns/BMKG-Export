@@ -1,12 +1,7 @@
 <?php
 // Koneksi ke database
-$mysqli = new mysqli('localhost', 'root', '', 'meteorologi');
+require __DIR__ . '/../service/database_login.php';
 
-// Periksa koneksi
-if ($mysqli->connect_errno) {
-    echo "Gagal terhubung ke MySQL: " . $mysqli->connect_error;
-    exit();
-}
 
 // Validasi input
 if (isset($_POST['ids']) && is_array($_POST['ids'])) {
